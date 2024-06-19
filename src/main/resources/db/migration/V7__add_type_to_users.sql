@@ -1,0 +1,2 @@
+CREATE TYPE user_type AS ENUM ('PROFESSOR', 'STUDENT');
+ALTER TABLE users ADD COLUMN type user_type;

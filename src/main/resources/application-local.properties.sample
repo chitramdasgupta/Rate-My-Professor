@@ -1,0 +1,4 @@
+spring.datasource.username=user_name
+spring.datasource.password=password
+spring.flyway.user=user_name
+spring.flyway.password=password

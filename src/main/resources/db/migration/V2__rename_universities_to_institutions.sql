@@ -1,0 +1,1 @@
+ALTER TABLE universities RENAME TO institutions;

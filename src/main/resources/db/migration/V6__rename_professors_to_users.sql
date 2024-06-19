@@ -1,0 +1,1 @@
+ALTER TABLE professors RENAME TO users;

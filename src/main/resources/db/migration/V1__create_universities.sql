@@ -1,0 +1,6 @@
+CREATE TABLE universities (
+ id SERIAL PRIMARY KEY,
+ name VARCHAR(255) NOT NULL,
+ city VARCHAR(255),
+ country VARCHAR(255)
+);
