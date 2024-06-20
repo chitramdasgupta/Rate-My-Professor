@@ -3,10 +3,13 @@ package com.dasgupta.RateMyProfessor.user;
 import com.dasgupta.RateMyProfessor.degree.Degree;
 import com.dasgupta.RateMyProfessor.department.Department;
 import com.dasgupta.RateMyProfessor.institution.Institution;
+import com.dasgupta.RateMyProfessor.reviews.Review;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+import java.util.Set;
 
 @Entity
 public class User {
@@ -45,6 +48,12 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "pursuing_degree_id")
     private Degree pursuingDegree;
+
+    @OneToMany(mappedBy = "student")
+    private Set<Review> givenReviews;
+
+    @OneToMany(mappedBy = "professor")
+    private Set<Review> receivedReviews;
 
     // Boilerplate
     public User() {
@@ -133,6 +142,22 @@ public class User {
         this.pursuingDegree = pursuingDegree;
     }
 
+    public Set<Review> getGivenReviews() {
+        return givenReviews;
+    }
+
+    public void setGivenReviews(Set<Review> givenReviews) {
+        this.givenReviews = givenReviews;
+    }
+
+    public Set<Review> getReceivedReviews() {
+        return receivedReviews;
+    }
+
+    public void setReceivedReviews(Set<Review> receivedReviews) {
+        this.receivedReviews = receivedReviews;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -156,6 +181,8 @@ public class User {
                 ", institution=" + institution +
                 ", department=" + department +
                 ", type=" + type +
+                ", givenReviews=" + (givenReviews != null ? givenReviews.size() : 0) +
+                ", receivedReviews=" + (receivedReviews != null ? receivedReviews.size() : 0) +
                 '}';
     }
 }
